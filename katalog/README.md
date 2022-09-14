@@ -16,8 +16,11 @@ beserta responnya:
 
 ![](https://github.com/kausarme/tugas2-pbp/blob/main/render/bagan.png?raw=true)
 
-jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py,
-dan berkas html;
+Saat users mengakses internet dengan membuka website, browser yang ada di users merequest website ke server. 
+Django yang ada di server akan menangnai request dengan menjalankan manage.py yang akan menentukan routing melalui urls.
+setelah itu urls yange sesuai akan memanggil fungsi yang ada di views. fungsi pada views akan mengembalikan 
+mengambil data dari models dan template. Setelah itu views akan mengembalikan hasil template yang sudah 
+dirender menggunakan data dari models.
 
 # Virtual Enviroment
 ## Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
