@@ -1,3 +1,6 @@
+# Intellij Idea
+.idea
+
 # Virtual environments
 .env
 .venv
