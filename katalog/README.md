@@ -24,11 +24,12 @@ dirender menggunakan data dari models.
 
 # Virtual Enviroment
 ## Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
-Short Answer: Yes 
-Virtual Enviroment 
-
-## Kenapa menggunakan virtual environment? 
-karena enak
+Penggunaan Virtual Environment sebenarnya tidak diwajibkan. 
+Kita tetap dapat membuat sebuah aplikasi web berbasis tanpa menggunakan virtual enviroment. 
+## Kenapa menggunakan virtual environment?
+Projek - Projek berbeda kadang memiliki keperluan/ *depedencies* yang berbeda akan banyak faktor.
+Untuk itu, Virtual Enviroment diperlukan untuk memastikan bahwa setiap projek terpisah dan 
+tidak akan terpengaruh dengan perubahan projek lainnya yang seharusnya tidak berhubungan.
 
 
 # Implementasi
