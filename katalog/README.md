@@ -14,7 +14,7 @@ https://kausarme-tugas2pbp.herokuapp.com/katalog
 Buatlah bagan yang berisi request client ke web aplikasi berbasis Django
 beserta responnya:
 
-![](.\render\bagan.png?raw=true)
+![](https://github.com/kausarme/tugas2-pbp/blob/main/render/bagan.png?raw=true)
 
 jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py,
 dan berkas html;
