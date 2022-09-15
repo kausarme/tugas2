@@ -198,10 +198,55 @@ HEROKU_APP_NAME: <NAMA_APLIKASI>
 
 Referensi testing: 
 
-- [Django Testing Tutorial - 
-How To Set Up Tests And Testing URLs #2](https://youtu.be/0MrgsYswT1c)
+- [Django Testing Tutorial](https://learndjango.com/tutorials/django-testing-tutorial)
+- [Django Testing Documentation](https://docs.djangoproject.com/en/4.1/topics/testing/overview/)
+
+# Testing
+Untuk membuat testing kita akan mengubah file `test.py` pada folder katalog
+
+```py
+from django.test import TestCase
+from katalog.models import CatalogItem
 
 
-## Unit Test:
+# Create your tests here.
 
-## Functional Test: 
+class CatalogTestCase(TestCase):
+    def setUp(self):
+        CatalogItem.objects.create(item_name="Bakso",
+                                   item_price=10000,
+                                   item_stock=10,
+                                   description="Bakso Test",
+                                   rating=5,
+                                   item_url="www.google.com")
+
+    def test_url(self):
+        """Url is correct"""
+        bakso = CatalogItem.objects.get(item_name="Bakso")
+        self.assertEqual(bakso.item_url, "www.google.com")
+
+    def test_item_price(self):
+        """Url is correct"""
+        bakso = CatalogItem.objects.get(item_name="Bakso")
+        self.assertEqual(bakso.item_price, 10000)
+
+    def test_item_stock(self):
+        """Url is correct"""
+        bakso = CatalogItem.objects.get(item_name="Bakso")
+        self.assertEqual(bakso.item_stock, 10)
+
+    def test_description(self):
+        """Url is correct"""
+        bakso = CatalogItem.objects.get(item_name="Bakso")
+        self.assertEqual(bakso.description, "Bakso Test")
+
+    def test_rating(self):
+        """Url is correct"""
+        bakso = CatalogItem.objects.get(item_name="Bakso")
+        self.assertEqual(bakso.rating, 5)
+```
+
+Lalu jalankan teset dengan
+```buildoutcfg
+python manage.py test
+```
