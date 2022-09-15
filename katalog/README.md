@@ -246,7 +246,7 @@ class CatalogTestCase(TestCase):
         self.assertEqual(bakso.rating, 5)
 ```
 
-Lalu jalankan teset dengan
-```buildoutcfg
+Lalu jalankan test dengan
+```
 python manage.py test
 ```
