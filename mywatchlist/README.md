@@ -163,11 +163,30 @@ Push ke Github, dan deployment pada herokuapp akan berjalan secara otomatis.
 Ini adalah Readmenya.
 
 ## 9. Mengakses tiga URL di poin 6 menggunakan Postman, menangkap screenshot, dan menambahkannya ke dalam README.md
-- Sign up di Postman API
-- 
-## 10. Menambahkan unit test pada tests.py untuk menguji bahwa tiga URL di poin 6 dapat mengembalikan respon HTTP 200 OK
-- import unittest 
-```python
+- Gunakan Postman untuk memeriksa respons aplikasi dari luar.
 
+## 10. Menambahkan unit test pada tests.py untuk menguji bahwa tiga URL di poin 6 dapat mengembalikan respon HTTP 200 OK
+- import Client dan TestCase
+```python
+from django.test import TestCase, Client
 ```
-- Buat fungsi untuk mengecek URL - URL
+- Buat fungsi untuk mengecek URL - URL ada dan url menggunakan template yang benar
+```python
+    def test_exists(self):
+        response = Client().get('/mywatchlist/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_template(self):
+        response = Client().get('/mywatchlist/')
+        self.assertTemplateUsed(response, 'watchlist.html')
+```
+
+--- 
+
+# PostMan
+## HTML
+
+## XML
+
+## JSON
+

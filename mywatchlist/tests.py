@@ -30,14 +30,6 @@ class ViewsTest(TestCase):
         response = Client().get('/mywatchlist/json')
         self.assertEqual(response.status_code, 200)
 
-    def test_exists_json2(self):
-        response = Client().get('/mywatchlist/json/')
-        self.assertEqual(response.status_code, 200)
-
     def test_exists_xml(self):
         response = Client().get('/mywatchlist/xml')
-        self.assertEqual(response.status_code, 200)
-
-    def test_exists_xml2(self):
-        response = Client().get('/mywatchlist/xml/')
         self.assertEqual(response.status_code, 200)
