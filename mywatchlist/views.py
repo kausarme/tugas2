@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from mywatchlist.models import MyWatchList
 
 
 # Create your views here.
