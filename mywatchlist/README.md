@@ -80,8 +80,19 @@ class MyWatchList(models.Model):
 ## 4. Menambahkan minimal 10 data untuk objek`MyWatchList`yang sudah dibuat di atas
 buat initial_mywatchlist_data.json
 Masukkan data untuk 10 objek 
-```
-
+```json
+{
+        "model":"mywatchlist.mywatchlist",
+        "pk":1,
+        "fields":{
+            "watched": true,
+            "title": "Thor: Love and Thunder",
+            "rating": 2,
+            "release_date": "2022-07-06",
+            "review": "The humor made this story bearable to watch. The story and plot holes is disappointing."
+        }
+    },
+...
 ```
 
 ## 5. Mengimplementasikan sebuah fitur untuk menyajikan data yang telah dibuat sebelumnya dalam tiga format:
@@ -123,6 +134,9 @@ def show_mywatchlist_json_by_id(request, id):
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 ```
 
+Membuat `mywatchlist.html` pada `mywatchlist/templates` sebagai bentuk template untuk html
+
+
 ## 6. Membuat_routing_sehingga data di atas dapat diakses melalui URL:
 -   http://localhost:8000/mywatchlist/html untuk mengakses`mywatchlist`dalam format HTML
 -   http://localhost:8000/mywatchlist/xml untuk mengakses`mywatchlist`dalam format XML
@@ -139,14 +153,21 @@ dengan cara menambahkan baris baris berikut ke urls.py
 ```
 
 ## 7. Mendeploy ke Heroku
-karena sudah ada Procfile dan github/worflow/dpl.yml dari Tugas sebelumnya,
+Karena sudah ada Procfile dan github/worflow/dpl.yml dari tugas sebelumnya,
 kita cukup menambahkan baris berikut di `procfile.sh` untuk meload data json ke models.
-```buildoutcfg
+```
 python manage.py loaddata initial_mywatchlist_data.json
 ```
+Push ke Github, dan deployment pada herokuapp akan berjalan secara otomatis.
+## 8. Membuat Readme
+Ini adalah Readmenya.
 
-## 8. 
+## 9. Mengakses tiga URL di poin 6 menggunakan Postman, menangkap screenshot, dan menambahkannya ke dalam README.md
+- Sign up di Postman API
+- 
+## 10. Menambahkan unit test pada tests.py untuk menguji bahwa tiga URL di poin 6 dapat mengembalikan respon HTTP 200 OK
+- import unittest 
+```python
 
-## 9. 
-
-## 10. 
+```
+- Buat fungsi untuk mengecek URL - URL
