@@ -1,17 +1,37 @@
+#Tugas 3:
+---
+    Nama: Kausar Meutuwah
+    NPM: 2106630100
+---
 
-## Link Website
+# Link Website
 - HTML : [https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/html](https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/html)
 - XML  : [https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/xml](https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/xml)
 - JSON : [https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/json](https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/json)
 - Heroku :[https://kausarme-tugas2pbp.herokuapp.com/mywatchlist](https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/)
 
 
-Tugas 3:
----
-    Nama: Kausar Meutuwah
-    NPM: 2106630100
----
+# JSON, XML, HTML
 
+Secara garis besar, HTML, JSON, XML merupakan format data delivery yang sering dipakai di Django. Tetapi, XML dan JSON lebih menitikberatkan struktur dan konteks data tersebut. Sedangkan HTML menitikberatkan bagaimana format tampilan dari data tersebut muncul di halaman web.
+
+Berdasarkan cara menyimpan elemennya, JSON lebih efisien akan tetapi tidak rapi untuk dilihat. Sedangkan XML menyimpan elemen-elemen nya dengan cara yang terstruktur, mudah dibaca oleh manusia dan mesin, akan tetapi kurang efisien. Berdasarkan penerapannya, JSON digunakan untuk mengirimkan data dengan cara data diuraikan dan dikirimkan melalui internet. Sedangkan XML memiliki data yang lebih terstruktur dan pengguna dapat menggunakannya untuk menambahkan catatan.
+
+- XML
+*Extensible Markup Language* (XML) adalah bahasa komputer yang dibuat oleh World Wide Web Consortium (W3C) untuk menyederhanakan proses pertukaran dan penyimpanan data. Pada implementasinya menggunakan format *markup* seperti HTML.
+
+- JSON
+*JavaScript Object Notation* (JSON) adalah turunan JavaScript yang digunakan dalam transfer dan penyimpanan data. Pada implementasinya banyak menggunakan kurung krawal `{}` yang berisi data berformat *key* dan *value* yang mirip dengan *dictionary* nya Python.
+
+- HTML
+*HyperText Markup Language* (HTML) adalah bahasa *markup* yang digunakan untuk menampilkan halaman website. Biasanya disandingkan dengan CSS untuk membuat halaman website.
+
+# Data Delivery
+
+Data delivery digunakan untuk alat komunikasi antara client dan server. Client ingin halaman web menampilkan sesuatu yang dia inginkan, digunakan Data delivery untuk mempercepat pengiriman data. Penyampaian data seringkali dalam format JSON, XML, atau format penyampaian data lainnya. 
+
+
+---
 # Implementasi:
 
 ## Setup: 
@@ -118,9 +138,15 @@ dengan cara menambahkan baris baris berikut ke urls.py
     path('json/<int:id>', show_mywatchlist_json_by_id, name='show_mywatchlist_json_by_id'),  
 ```
 
-## Mendeploy ke Heroku
+## 7. Mendeploy ke Heroku
 karena sudah ada Procfile dan github/worflow/dpl.yml dari Tugas sebelumnya,
-kita cukup mengganti `procfile.sh` (berisi script untuk memigrate dan mengload data json)
+kita cukup menambahkan baris berikut di `procfile.sh` untuk meload data json ke models.
 ```buildoutcfg
-
+python manage.py loaddata initial_mywatchlist_data.json
 ```
+
+## 8. 
+
+## 9. 
+
+## 10. 
