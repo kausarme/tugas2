@@ -1,0 +1,112 @@
+[
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":1,
+        "fields":{
+            "watched": true,
+            "title": "Thor: Love and Thunder",
+            "rating": 2,
+            "release_date": "2022-07-06",
+            "review": "The humor made this story bearable to watch. The story and plot holes is disappointing."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":2,
+        "fields":{
+            "watched": true,
+            "title": "Demon Slayer: Mugen Train",
+            "rating": 5,
+            "release_date": "2021-01-06",
+            "review": "A movie about demon slaying with sacrifice and fancy animation. Makes me cry. Great overall"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":3,
+        "fields":{
+            "watched": true,
+            "title":"Your Name",
+            "rating": 3,
+            "release_date": "2016-12-07",
+            "review": "An okay movie about people swapping bodies, i don't really got it tho"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":4,
+        "fields":{
+            "watched": true,
+            "title":"Ngeri-Ngeri Sedap",
+            "rating": 3,
+            "release_date": "2022-06-02",
+            "review": "A familial comedy-drama that felt familiar and pertinent."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":5,
+        "fields":{
+            "watched": true,
+            "title":"Spider-Man: Far from Home",
+            "rating": 4,
+            "release_date": "2019-07-03",
+            "review": "A spiderman movie with a big plot twist on the villains. makes you wonder wtf happened"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":6,
+        "fields":{
+            "watched": false,
+            "title":"Final Destination 3",
+            "rating": 3,
+            "release_date": "2006-02-10",
+            "review": "Final destination but rollercoaster. Is okay i guess"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":7,
+        "fields":{
+            "watched": true,
+            "title":"Ant-Man",
+            "rating": 4,
+            "release_date": "2015-07-16",
+            "review": "Ant-Man is origin story of ant-man, quite funny and fun but not a masterpiece."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":8,
+        "fields":{
+            "watched": true,
+            "title":"Deadpool",
+            "rating": 4,
+            "release_date": "2016-02-10",
+            "review": "A lot of dark humor here. but the characters jokes and wittiness makes up for it"
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":9,
+        "fields":{
+            "watched": false,
+            "title":"Miracle in Cell No. 7",
+            "rating": 5,
+            "release_date": "2013-07-19",
+            "review": "I have no idea what this film is about."
+        }
+    },
+    {
+        "model":"mywatchlist.mywatchlist",
+        "pk":10,
+        "fields":{
+            "watched": false,
+            "title":"The SpongeBob Movie: Sponge on the Run",
+            "rating": 3,
+            "release_date": "2020-07-14",
+            "review": "Another spongebob movie, atleast it has good animation"
+        }
+    }
+]
