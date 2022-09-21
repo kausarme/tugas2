@@ -1,1 +1,1 @@
-(https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/)[https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/json/]
+[https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/json/](https://kausarme-tugas2pbp.herokuapp.com/mywatchlist/)
