@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+
+  <p>
+    {% if distinction %}
+    Selamat, kamu sudah banyak menonton!
+    {% else %}
+    Wah, kamu masih sedikit menonton!
+    {% endif %}
+  </p>
+  <table>
+    <tr>
+      <th>Watched</th>
+      <th>Title</th>
+      <th>Release Date</th>
+      <th>Rating</th>
+      <th>Review</th>
+    </tr>
+    {% for item in list %}
+		<tr>
+			<td>{% if item.watched %}Watched{% else %}Not Watched{% endif %}</td>
+			<td>{{ item.title }}</td>
+			<td>{{ item.release_date }}</td>
+			<td>{{ item.rating }}</td>
+			<td>{{ item.review }}</td>
+		</tr>
+	{% endfor %}
+  </table>
+
+ {% endblock content %}
