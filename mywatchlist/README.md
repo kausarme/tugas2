@@ -193,3 +193,33 @@ from django.test import TestCase, Client
 
 ![](../render/tugas3_postman_json.png)
 
+--- 
+
+# Bonus
+
+Tambahkan Baris berikut pada `mywatchlist.html` untuk menambahkan baris Selamat kamu dauh menonton
+```html
+<p>
+    {% if watch_many %}
+    Selamat, kamu sudah banyak menonton!
+    {% else %}
+    Wah, kamu masih sedikit menonton!
+    {% endif %}
+</p>
+```
+
+dan baris berikut di dalam fungsi untuk  show html
+```python
+deltaWatched = 0
+for movie in watchlist_item:
+    if movie.watched == True:
+        deltaWatched += 1
+    else:
+        deltaWatched -= 1
+```
+
+serta masukkan 
+```python
+'watch_many' : (deltaWatched >= 0)
+```
+di dalam variabel context untuk memberitahu apakah lebih banyak yang ditonton atau tidak

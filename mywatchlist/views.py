@@ -7,10 +7,18 @@ from mywatchlist.models import MyWatchList
 # Create your views here.
 def show_mywatchlist(request):
     watchlist_item = MyWatchList.objects.all()
+    deltaWatched = 0
+    for movie in watchlist_item:
+        if movie.watched == True:
+            deltaWatched += 1
+        else:
+            deltaWatched -= 1
+
     context = {
         'list_barang': watchlist_item,
         'nama': 'Kausar Meutuwah',
         'NPM': "2106630100",
+        'watch_many': (deltaWatched >= 0)
     }
     return render(request, "mywatchlist.html", context)
 
