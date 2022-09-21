@@ -185,8 +185,11 @@ from django.test import TestCase, Client
 
 # PostMan
 ## HTML
-
+![](../render/tugas3_postman_html.png)
 ## XML
 
+![](../render/tugas3_postman_xml.png)
 ## JSON
+
+![](../render/tugas3_postman_json.png)
 
