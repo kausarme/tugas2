@@ -24,9 +24,9 @@
       <th>Rating</th>
       <th>Review</th>
     </tr>
-    {% for item in list %}
+    {% for item in list_barang %}
 		<tr>
-			<td>{% if item.watched %}Watched{% else %}Not Watched{% endif %}</td>
+			<td>{% if item.watched %}Yes{% else %}No{% endif %}</td>
 			<td>{{ item.title }}</td>
 			<td>{{ item.release_date }}</td>
 			<td>{{ item.rating }}</td>
