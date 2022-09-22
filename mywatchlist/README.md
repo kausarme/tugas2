@@ -13,22 +13,40 @@
 
 # JSON, XML, HTML
 
-Secara garis besar, HTML, JSON, XML merupakan format data delivery yang sering dipakai di Django. Tetapi, XML dan JSON lebih menitikberatkan struktur dan konteks data tersebut. Sedangkan HTML menitikberatkan bagaimana format tampilan dari data tersebut muncul di halaman web.
+JSON, XML, dan HTML adalah jenis - jenis data delivery. 
+Walaupun begitu, mereka memiliki cara menyimpan data yang berbeda.
 
-Berdasarkan cara menyimpan elemennya, JSON lebih efisien akan tetapi tidak rapi untuk dilihat. Sedangkan XML menyimpan elemen-elemen nya dengan cara yang terstruktur, mudah dibaca oleh manusia dan mesin, akan tetapi kurang efisien. Berdasarkan penerapannya, JSON digunakan untuk mengirimkan data dengan cara data diuraikan dan dikirimkan melalui internet. Sedangkan XML memiliki data yang lebih terstruktur dan pengguna dapat menggunakannya untuk menambahkan catatan.
+JSON memiliki cara yang paling efisien untuk meyimpan datanya akan tetapi bentuknya tidak begitu rapi.
+Sementara XML datanya lebih terorganisir dibadingkan JSON, 
+Sehingga lebih mudah untuk dibaca.
 
-- XML
-*Extensible Markup Language* (XML) adalah bahasa komputer yang dibuat oleh World Wide Web Consortium (W3C) untuk menyederhanakan proses pertukaran dan penyimpanan data. Pada implementasinya menggunakan format *markup* seperti HTML.
 
-- JSON
-*JavaScript Object Notation* (JSON) adalah turunan JavaScript yang digunakan dalam transfer dan penyimpanan data. Pada implementasinya banyak menggunakan kurung krawal `{}` yang berisi data berformat *key* dan *value* yang mirip dengan *dictionary* nya Python.
+## Extensible Markup Language (XML) 
+XML adalah sebuah Markup Language yang digunakan untuk mengantarkan dan menyimpan data. 
+XML memiliki tag yang berguna untuk mempermudah pembacaan oleh manusia. 
+Akan tetapi, Komputer tidak memerlukan data tersebut sehingga XML lebih tidak efiesien dalam penyimpanan data dibanding XML.
+Akibatnya XML lebih sering digunakan untuk pembacaan saja sementara JSON lebih populer untuk penyimpanan data dan API.
 
-- HTML
-*HyperText Markup Language* (HTML) adalah bahasa *markup* yang digunakan untuk menampilkan halaman website. Biasanya disandingkan dengan CSS untuk membuat halaman website.
+ 
+## JavaScript Object Notation (JSON)
+JSON adalah sebuah format yang digunakan untuk menyimpan, membaca dan menukar data.
+JSON bisanya berbentuk terlihat sebagai bentuk key dan pair yang tersimpan dalam bracket `{}`.
+JSON lebih efisien dalam penyimpanan data, akan tetapi lebih sulit dipelajari dan dibaca manusia karena bentuk formatnya yang tidak terlalu rapi untuk manusia.
+
+## HyperText Markup Language (HTML) 
+HTML adalah format standar untuk membuat dan menyusun data dari halaman dan aplikasi Web.
+HTML merupakan Markup Language sehingga memiliki sintaks yang mirip dengan XML.
+HTML berfokus dalam penyajian data dan bukan datanya sendiri. 
+Akibatnya HTML jarang digunakan untuk menyimpan data dan hanya dipakai untuk menampilkan data dari aplikasi Web.
+
+Referensi:
+- https://www.dicoding.com/blog/apa-itu-json/
 
 # Data Delivery
-
-Data delivery digunakan untuk alat komunikasi antara client dan server. Client ingin halaman web menampilkan sesuatu yang dia inginkan, digunakan Data delivery untuk mempercepat pengiriman data. Penyampaian data seringkali dalam format JSON, XML, atau format penyampaian data lainnya. 
+Agar Client dan Server dapat berkomunikasi diperlukan sebuah alat komunikasi. 
+Alat komunikasi tersebut disebut Data Delivery. Daripada mengembalikan keseluruhan Webpage kembli kepada client.
+Server dapat mengembalikan data dalam format JSON, XML atau lainnya. Hal ini mempercepat Komunikasi antara Client dan Server.
+yampaian data seringkali dalam format JSON, XML, atau format penyampaian data lainnya. 
 
 
 ---
