@@ -17,7 +17,18 @@ path('todolist/', include('todolist.urls')),
 - [ ] `title` untuk mendeskripsikan judul _task_.
 - [ ] `description` untuk mendeskripsikan deskripsi _task_.
 
-## Mengimplementasikan form registrasi, _login_, dan _logout_ agar pengguna dapat menggunakan `todolist` dengan baik.
+```py
+from django.contrib.auth.models import User
+
+class Task(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	date = models.DateField()
+	title = models.CharField(max_length=255)
+	description = models.TextField()
+```
+
+## Mengimplementasikan form registrasi, _login_, dan _logout_ agar pengguna dapat menggunakan `todolist` dengan baik
+.
 ##  Membuat halaman utama `todolist` yang memuat _username_ pengguna, tombol `Tambah Task Baru`, tombol _logout_, serta tabel berisi tanggal pembuatan _task_, judul _task_, dan deskripsi _task_.
 
 ##  Membuat halaman form untuk pembuatan _task_. Data yang perlu dimasukkan pengguna hanyalah judul _task_ dan deskripsi _task_.> Dokumentasi Django mengenai `Form` dapat kamu baca [disini](https://docs.djangoproject.com/en/4.1/topics/forms/).
