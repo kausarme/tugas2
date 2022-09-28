@@ -128,6 +128,11 @@ Buat Tabel:
 
 
 ##  Membuat halaman form untuk pembuatan _task_. Data yang perlu dimasukkan pengguna hanyalah judul _task_ dan deskripsi _task_.> Dokumentasi Django mengenai `Form` dapat kamu baca [disini](https://docs.djangoproject.com/en/4.1/topics/forms/).
+buat kelas forms.py
+buat template untuk create_task
+buat views untuk create_task
+
+
 
 ##  Membuat _routing_ sehingga beberapa fungsi dapat diakses melalui URL berikut:
 
@@ -143,4 +148,17 @@ Buat Tabel:
 - [ ] Apakah kita dapat membuat elemen `<form>` secara manual (tanpa menggunakan _generator_ seperti `{{ form.as_table }}`)? Jelaskan secara gambaran besar bagaimana cara membuat `<form>` secara manual.
 - [ ] Jelaskan proses alur data dari submisi yang dilakukan oleh pengguna melalui HTML form, penyimpanan data pada _database_, hingga munculnya data yang telah disimpan pada _template_ HTML.
 
+# Bonus
+### Tambahkan atribut `is_finished` 
+pada model `Task` (dengan _default value_ `False`) 
+dan buatlah dua kolom baru pada tabel _task_ yang berisi status penyelesaian _task_ dan 
+tombol untuk mengubah status penyelesaian suatu _task_ menjadi `Selesai` atau `Belum Selesai`.
 
+
+### Tambahkan kolom baru pada tabel _task_ yang berisi tombol untuk menghapus suatu _task_.
+Kedua fitur di atas wajib diimplementaskan (bukan sekedar tombol, melainkan harus dapat melakukan _behavior_ yang diinginkan) jika kamu ingin mendapatkan nilai bonus.
+
+
+### Buat tombol Hapus Task
+buat views untuk delete_task
+buat tombol untuk delete_task

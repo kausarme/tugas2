@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Create Task | To do list</title>
+{% endblock meta %}
+
+
+{% block content %}
+
+<nav>
+    <h1>To Do List</h1>
+    <div class="nav-right">
+        <strong>Halo, {{ user.username }}!</strong>
+        <a class="btn" href="{% url 'todolist:logout' %}">Logout</a>
+    </div>
+</nav>
+
+<section class="container">
+    <h1>Create New Task</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div>
+            {{ field.errors }}
+            {{ field.label_tag }}<br>
+            {{ field }}
+        </div>
+        {% endfor %}
+        <input class="btn" type="submit" name="submit" value="Buat Task"/>
+    </form>
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+
+{% endblock content %}
