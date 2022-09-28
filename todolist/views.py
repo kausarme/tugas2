@@ -3,7 +3,7 @@ from models import Task
 
 
 # Create your views here.
-def show_mywatchlist(request):
+def show_todolist(request):
     todolist_item = Task.objects.all()
     context = {
         'list_todo': todolist_item,
