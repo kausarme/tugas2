@@ -224,35 +224,71 @@ Data yang perlu dimasukkan pengguna:
 [Dokumentasi Form Django](https://docs.djangoproject.com/en/4.1/topics/forms/).
 
 Buat kelas TaskForm pada forms.py
-
-![](todolist/forms.py)
-
-
-###  Membuat _routing_ sehingga beberapa fungsi dapat diakses melalui URL berikut:
+```python
+from django.forms import ModelForm
+from todolist.models import Task
 
 
-- [ ] http://localhost:8000/todolist/create-task berisi form pembuatan _task_.
+class TaskForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = ["title", "description"]
+```
 
-### Melakukan deployment ke Heroku 
+Buat Template untuk create_task yang menandung elemen:
+```html
+<form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        {{ field.errors }}
+        {{ field.label_tag }}<br>
+        {{ field }}
+    </div>
+    {% endfor %}
+    <input class="btn" type="submit" name="submit" value="Buat Task"/>
+</form>
+```
+Buat path di urls.py
 
-### Membuat akun dummy dan data dummy
+### 8. (BONUS) Buat views untuk men-_toggle_ status Task
 
-###  Membuat sebuah `README.md` pada folder `todolist` yang berisi tautan menuju aplikasi Heroku yang sudah kamu _deploy_ serta jawaban dari beberapa pertanyaan berikut:
-- [ ] Apa kegunaan `{% csrf_token %}` pada elemen `<form>`? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen `<form>`?
-- [ ] Apakah kita dapat membuat elemen `<form>` secara manual (tanpa menggunakan _generator_ seperti `{{ form.as_table }}`)? Jelaskan secara gambaran besar bagaimana cara membuat `<form>` secara manual.
-- [ ] Jelaskan proses alur data dari submisi yang dilakukan oleh pengguna melalui HTML form, penyimpanan data pada _database_, hingga munculnya data yang telah disimpan pada _template_ HTML.
+Jika belum:
+- Tambahkan atribut `is_finished`pada model `Task` (dengan _default value_ `False`).
+- Tambahkan dua kolom baru pada tabel _task_ yang berisi status penyelesaian _task_ dan tombol untuk mengubah status penyelesaian suatu _task_ menjadi `Selesai` atau `Belum Selesai`.
 
-## Bonus
-### Tambahkan atribut `is_finished` 
-pada model `Task` (dengan _default value_ `False`) 
-dan buatlah dua kolom baru pada tabel _task_ yang berisi status penyelesaian _task_ dan 
-tombol untuk mengubah status penyelesaian suatu _task_ menjadi `Selesai` atau `Belum Selesai`.
+Buat views toggle_task pada  untuk menangani ubah status pada html
+```python
+@login_required(login_url="/todolist/login/")
+def toggle_task(request, id):
+    task = Task.objects.get(pk=id)
+    if task:
+        task.is_finished = False if task.is_finished else True
+        task.save()
+        return redirect("/todolist")
+    messages.error(request, "An error occurred while editing the task.")
+    return redirect("/todolist")
+```
+Buat views delete_task untuk menghapus task
+```python
+@login_required(login_url="/todolist/login/")
+def delete_task(request, id):
+    task = Task.objects.get(pk=id)
+    if task:
+        task.delete()
+        return redirect("/todolist")
+    messages.error(request, "An error occurred while deleting the task.")
+    return redirect("/todolist")
+```
+tambahkan pada path
 
+### 9. Melakukan deployment ke Heroku 
+karena Procfile dan workflow udah ada tinggal pull, add, commit, dan push ke github
 
-### Tambahkan kolom baru pada tabel _task_ yang berisi tombol untuk menghapus suatu _task_.
-Kedua fitur di atas wajib diimplementaskan (bukan sekedar tombol, melainkan harus dapat melakukan _behavior_ yang diinginkan) jika kamu ingin mendapatkan nilai bonus.
+### 10. Membuat 2 akun dummy dan 3 data dummy
+Buat akun di Hasil Deploy yang udah ada
 
-
-### Buat tombol Hapus Task
-buat views untuk delete_task
-buat tombol untuk delete_task
+###11.   Membuat sebuah `README.md` pada folder `todolist` yang berisi tautan menuju aplikasi Heroku yang sudah kamu _deploy_ serta jawaban dari beberapa pertanyaan berikut:
+- [x] Apa kegunaan `{% csrf_token %}` pada elemen `<form>`? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen `<form>`?
+- [x] Apakah kita dapat membuat elemen `<form>` secara manual (tanpa menggunakan _generator_ seperti `{{ form.as_table }}`)? Jelaskan secara gambaran besar bagaimana cara membuat `<form>` secara manual.
+- [x] Jelaskan proses alur data dari submisi yang dilakukan oleh pengguna melalui HTML form, penyimpanan data pada _database_, hingga munculnya data yang telah disimpan pada _template_ HTML.
