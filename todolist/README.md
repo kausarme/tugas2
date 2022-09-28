@@ -27,21 +27,28 @@ class Task(models.Model):
 	description = models.TextField()
 ```
 
-## Mengimplementasikan form registrasi, _login_, dan _logout_ agar pengguna dapat menggunakan `todolist` dengan baik
-Copy dari Lab 3 
-Registrasi Login dan Logout
+## Membuat Views untuk halaman utama kosong
+### buat todolist.html
+### buat show_todolist di views.py
 
+## Mengimplementasikan form registrasi, _login_, dan _logout_ agar pengguna dapat menggunakan `todolist` dengan baik
+### Buat register.html dan login.html
+### buat views untuk register login dan logout
+
+Registrasi Login dan Logout
+- http://localhost:8000/todolist 
+- http://localhost:8000/todolist/login 
+- http://localhost:8000/todolist/register 
+- http://localhost:8000/todolist/logout 
 
 ##  Membuat halaman utama `todolist` yang memuat _username_ pengguna, tombol `Tambah Task Baru`, tombol _logout_, serta tabel berisi tanggal pembuatan _task_, judul _task_, dan deskripsi _task_.
 
 ##  Membuat halaman form untuk pembuatan _task_. Data yang perlu dimasukkan pengguna hanyalah judul _task_ dan deskripsi _task_.> Dokumentasi Django mengenai `Form` dapat kamu baca [disini](https://docs.djangoproject.com/en/4.1/topics/forms/).
 
 ##  Membuat _routing_ sehingga beberapa fungsi dapat diakses melalui URL berikut:
-- [ ] http://localhost:8000/todolist berisi halaman utama yang memuat tabel _task_.
-- [ ] http://localhost:8000/todolist/login berisi form _login_.
-- [ ] http://localhost:8000/todolist/register berisi form registrasi akun.
+
+
 - [ ] http://localhost:8000/todolist/create-task berisi form pembuatan _task_.
-- [ ] http://localhost:8000/todolist/logout berisi mekanisme _logout_.
 
 ## Melakukan deployment ke Heroku 
 
