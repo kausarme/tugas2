@@ -289,9 +289,9 @@ karena Procfile dan workflow udah ada tinggal pull, add, commit, dan push ke git
 Buat akun di Hasil Deploy yang udah ada
 
 Akun dummy123 password baksobakso
-![](./render/Dummy1.png)
+![](render/Dummy1.png)
 Akun kucing_oren password meowsiuu
-![](./render/Dummy2.png)
+![](render/Dummy2.png)
 
 ### 11. Membuat sebuah `README.md` pada folder `todolist` yang berisi tautan menuju aplikasi Heroku yang sudah kamu _deploy_ serta jawaban dari beberapa pertanyaan berikut:
 - [x] Apa kegunaan `{% csrf_token %}` pada elemen `<form>`? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen `<form>`?
