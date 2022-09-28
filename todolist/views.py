@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 
+from django.contrib.auth import logout
+
 
 # Create your views here.
 def show_todolist(request):
@@ -42,3 +44,7 @@ def login_user(request):
     context = {}
     return render(request, 'login.html', context)
 
+
+def logout_user(request):
+    logout(request)
+    return redirect('wishlist:login')
