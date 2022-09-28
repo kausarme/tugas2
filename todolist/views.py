@@ -1,14 +1,15 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from todolist.models import Task
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-
 from django.contrib.auth import logout
 
 
 # Create your views here.
+@login_required(login_url='/todolist/login/')
 def show_todolist(request):
     todolist_item = Task.objects.all()
     context = {
