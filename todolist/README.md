@@ -288,7 +288,12 @@ karena Procfile dan workflow udah ada tinggal pull, add, commit, dan push ke git
 ### 10. Membuat 2 akun dummy dan 3 data dummy
 Buat akun di Hasil Deploy yang udah ada
 
-###11.   Membuat sebuah `README.md` pada folder `todolist` yang berisi tautan menuju aplikasi Heroku yang sudah kamu _deploy_ serta jawaban dari beberapa pertanyaan berikut:
+Akun dummy123 password baksobakso
+![](./render/Dummy1.png)
+Akun kucing_oren password meowsiuu
+![](./render/Dummy2.png)
+
+### 11. Membuat sebuah `README.md` pada folder `todolist` yang berisi tautan menuju aplikasi Heroku yang sudah kamu _deploy_ serta jawaban dari beberapa pertanyaan berikut:
 - [x] Apa kegunaan `{% csrf_token %}` pada elemen `<form>`? Apa yang terjadi apabila tidak ada potongan kode tersebut pada elemen `<form>`?
 - [x] Apakah kita dapat membuat elemen `<form>` secara manual (tanpa menggunakan _generator_ seperti `{{ form.as_table }}`)? Jelaskan secara gambaran besar bagaimana cara membuat `<form>` secara manual.
 - [x] Jelaskan proses alur data dari submisi yang dilakukan oleh pengguna melalui HTML form, penyimpanan data pada _database_, hingga munculnya data yang telah disimpan pada _template_ HTML.
