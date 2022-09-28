@@ -4,9 +4,9 @@ Pemrograman Berbasis Platform (CSGE602022)
 
 ## Daftar Isi 
 
-- [Tugas 2](https://github.com/kausarme/tugas2-pbp/tree/main/mywatchlist)
-- [Tugas 3](https://github.com/kausarme/tugas2-pbp/tree/main/katalog)
-- [Tugas 4](https://github.com/kausarme/tugas2-pbp/tree/main/todolist)
+- [Tugas 2: My Watch List](https://github.com/kausarme/tugas2-pbp/tree/main/mywatchlist)
+- [Tugas 3: Katalog](https://github.com/kausarme/tugas2-pbp/tree/main/katalog)
+- [Tugas 4: To Do List](https://github.com/kausarme/tugas2-pbp/tree/main/todolist)
 
 ## Credits
 Template ini dibuat berdasarkan [PBP Ganjil 2021](https://gitlab.com/PBP-2021/pbp-lab) 
