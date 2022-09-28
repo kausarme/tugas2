@@ -77,61 +77,72 @@ INSTALLED_APPS = [
 ```
 
 ### 2. Menambahkan path todolist pada projek utama
-Tambahkan path todolist sehingga pengguna dapat mengakses http://localhost:8000/todolist di `django_project/urls.py`
+Tambahkan path todolist sehingga pengguna dapat mengakses http://localhost:8000/todolist di `django_project/urls.py` 
 ```
 path('todolist/', include('todolist.urls')),
 ```
+dan buat `urls.py` di `todolist`
+```
+from django.urls import path
+app_name = "todolist"
 
+urlpatterns = [
 
-### Membuat sebuah model `Task` yang memiliki atribut sebagai berikut:
-- [ ] `user` untuk menghubungkan _task_ dengan pengguna yang membuat _task tersebut_.
+]
+```
+
+### 3. Membuat model `Task` 
+Task akan memiliki atribut sebagai berikut:
+- [x] `user` untuk menghubungkan _task_ dengan pengguna yang membuat _task tersebut_.
  Kamu dapat menggunakan tipe model `models.ForeignKey` dengan parameter `User`.
-- [ ] `date` untuk mendeskripsikan tanggal pembuatan _task_.
-- [ ] `title` untuk mendeskripsikan judul _task_.
-- [ ] `description` untuk mendeskripsikan deskripsi _task_.
+- [x] `date` untuk mendeskripsikan tanggal pembuatan _task_.
+- [x] `title` untuk mendeskripsikan judul _task_.
+- [x] `description` untuk mendeskripsikan deskripsi _task_.
+- [x] `is_finished` untuk status apakah task sudah selesai atau belum(BONUS)
 
+Tambah di models.py
 ```python
-from django.contrib.auth.models import User
-
 class Task(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	date = models.DateField()
-	title = models.CharField(max_length=255)
-	description = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    is_finished = models.BooleanField(default=False)
 ```
 
-### Membuat Views untuk halaman utama kosong
-#### buat todolist.html
-#### buat show_todolist di views.py
+Setelah membuat atau me-modify modelsjangan lupa untuk jalankan perintah 
+`python manage.py makemigrations` dan `python manage.py migrate`
 
-### Mengimplementasikan form registrasi, _login_, dan _logout_ agar pengguna dapat menggunakan `todolist` dengan baik
-#### Buat register.html dan login.html
-#### buat views untuk register login dan logout
+### 4. Membuat Views dan template
+- [x]  Buat views dan template untuk halaman utama (biarkan views dasar dulu)
+- [x]  Buat views dan template form registrasi
+- [x]  Buat views dan template _login_
+- [x]  Buat views dan template _logout_
 
-Registrasi Login dan Logout
-- http://localhost:8000/todolist 
-- http://localhost:8000/todolist/login 
-- http://localhost:8000/todolist/register 
-- http://localhost:8000/todolist/logout 
+Contohnya bisa cek di [Tutorial 3](https://pbp-fasilkom-ui.github.io/ganjil-2023/assignments/tutorial/tutorial-3)
 
-###  Membuat halaman utama `todolist` 
-- yang memuat 
-- username pengguna
-- tombol `Tambah Task Baru`
-- tombol _logout_
-- serta tabel berisi tanggal pembuatan _task_, judul _task_, dan deskripsi _task_.
+### 5. Buat path untuk 
+- [x]  halaman utama (biarkan views dasar dulu)
+- [x]  form registrasi
+- [x]  login
+- [x]  logout
 
-#### tambah context pada Views.py 
-```python
-tasks = Task.objects.all()
-    context = {
-        'tasks': tasks,
-        "user": request.user,
-    }
-```
+Kita bikin path terlebih dahulu agar gampang dicek dengan membuka `localhost:8080/todolist` setelah menjalankan `python manage.py runserver`
 
-#### Dalam todolist.html
-Buat tombol Username dan tombol Logout di kanan atas:
+### 6. Membuat halaman utama `todolist` 
+Buat Halaman Utama yang memuat 
+- [x] Username pengguna
+- [x] Tombol `Tambah Task Baru`
+- [x] Tombol _logout_
+- [x] Serta tabel 
+  - _task_
+  - judul _task_
+  - deskripsi _task_.
+  - tanggal _task_
+  - status task (BONUS)
+  - tombol ubah status task (BONUS)
+
+Username Pengguna dan Tombol Logout:
 ```html
 <div class="nav-right">
         <strong>Halo, {{ user.username }}!</strong>
@@ -139,14 +150,14 @@ Buat tombol Username dan tombol Logout di kanan atas:
   </div>
 ```
 
-Buat Tabel:
+Tabel dan tombol tambah task(Saya masukin dalam tabelnya juga): 
 ```html
 <table>
     <tr>
         <td class="table-header">User</td>
-        <td class="table-header">Judul</td>
-        <td class="table-header">Keterangan</td>
-        <td class="table-header">Dibuat</td>
+        <td class="table-header">Title</td>
+        <td class="table-header">Description</td>
+        <td class="table-header">Date</td>
         <td class="table-header">Status</td>
         <td class="table-header">Ubah Status</td>
         <td class="table-header">Hapus</td>
@@ -158,9 +169,9 @@ Buat Tabel:
         <td>{{ task.title }}</td>
         <td class="description-col">{{ task.description }}</td>
         <td>
-            {{ task.date | date:"N j, Y"}}<br>
-            {{ task.date | date:"H:i"}}
+            {{task.date|date:"N j, Y, H:i" }}
         </td>
+
         <td>
             {% if task.is_finished %}
             <p class="tag completed">
@@ -184,8 +195,8 @@ Buat Tabel:
             </a>
         </td>
     </tr>
-    {% endfor %}
 
+    {% endfor %}
     <tr>
         <td class="add-row" colspan="7">
             <a class="btn add-btn" href="{% url 'todolist:create_task' %}">
@@ -193,18 +204,28 @@ Buat Tabel:
             </a>
         </td>
     </tr>
-
+</table>
 ```
 
+modifikasi views.py juga untuk memasukkan database dan nama user
+```python
+tasks = Task.objects.all()
+context = {
+    'tasks': tasks,
+    "user": request.user,
+}
+```
 
-#### 
+### 7. Membuat halaman form untuk pembuatan _task_.
+Data yang perlu dimasukkan pengguna:
+- [x] Judul _task_
+- [x] Deskripsi _task_
 
+[Dokumentasi Form Django](https://docs.djangoproject.com/en/4.1/topics/forms/).
 
-### Membuat halaman form untuk pembuatan _task_. Data yang perlu dimasukkan pengguna hanyalah judul _task_ dan deskripsi _task_.> Dokumentasi Django mengenai `Form` dapat kamu baca [disini](https://docs.djangoproject.com/en/4.1/topics/forms/).
-buat kelas forms.py
-buat template untuk create_task
-buat views untuk create_task
+Buat kelas TaskForm pada forms.py
 
+![](todolist/forms.py)
 
 
 ###  Membuat _routing_ sehingga beberapa fungsi dapat diakses melalui URL berikut:
