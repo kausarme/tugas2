@@ -41,7 +41,91 @@ Registrasi Login dan Logout
 - http://localhost:8000/todolist/register 
 - http://localhost:8000/todolist/logout 
 
-##  Membuat halaman utama `todolist` yang memuat _username_ pengguna, tombol `Tambah Task Baru`, tombol _logout_, serta tabel berisi tanggal pembuatan _task_, judul _task_, dan deskripsi _task_.
+##  Membuat halaman utama `todolist` 
+- yang memuat 
+- username pengguna
+- tombol `Tambah Task Baru`
+- tombol _logout_
+- serta tabel berisi tanggal pembuatan _task_, judul _task_, dan deskripsi _task_.
+
+### tambah context pada Views.py 
+```python
+tasks = Task.objects.all()
+    context = {
+        'tasks': tasks,
+        "user": request.user,
+    }
+```
+
+#### Dalam todolist.html
+Buat tombol Username dan tombol Logout di kanan atas:
+```html
+<div class="nav-right">
+        <strong>Halo, {{ user.username }}!</strong>
+        <a class="btn" href="{% url 'todolist:logout' %}">Logout</a>
+  </div>
+```
+
+Buat Tabel:
+```html
+<table>
+    <tr>
+        <td class="table-header">User</td>
+        <td class="table-header">Judul</td>
+        <td class="table-header">Keterangan</td>
+        <td class="table-header">Dibuat</td>
+        <td class="table-header">Status</td>
+        <td class="table-header">Ubah Status</td>
+        <td class="table-header">Hapus</td>
+    </tr>
+
+    {% for task in tasks %}
+    <tr>
+        <td>{{ task.user.username }}</td>
+        <td>{{ task.title }}</td>
+        <td class="description-col">{{ task.description }}</td>
+        <td>
+            {{ task.date | date:"N j, Y"}}<br>
+            {{ task.date | date:"H:i"}}
+        </td>
+        <td>
+            {% if task.is_finished %}
+            <p class="tag completed">
+                Selesai
+            </p>
+            {% else %}
+            <p class="tag not-completed">
+                Belum Selesai
+            </p>
+            {% endif %}
+
+        </td>
+        <td>
+            <a class="btn toggle-btn" href="{% url 'todolist:toggle_task' task.id %}">
+                Ubah
+            </a>
+        </td>
+        <td>
+            <a class="btn delete-btn" href="{% url 'todolist:delete_task' task.id %}">
+                Hapus Task
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+
+    <tr>
+        <td class="add-row" colspan="7">
+            <a class="btn add-btn" href="{% url 'todolist:create_task' %}">
+                Tambah Task
+            </a>
+        </td>
+    </tr>
+
+```
+
+
+### 
+
 
 ##  Membuat halaman form untuk pembuatan _task_. Data yang perlu dimasukkan pengguna hanyalah judul _task_ dan deskripsi _task_.> Dokumentasi Django mengenai `Form` dapat kamu baca [disini](https://docs.djangoproject.com/en/4.1/topics/forms/).
 

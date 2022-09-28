@@ -11,9 +11,10 @@ from django.contrib.auth import logout
 # Create your views here.
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
-    todolist_item = Task.objects.all()
+    tasks = Task.objects.all()
     context = {
-        'list_todo': todolist_item,
+        'tasks': tasks,
+        "user": request.user,
     }
     return render(request, "todolist.html", context)
 
