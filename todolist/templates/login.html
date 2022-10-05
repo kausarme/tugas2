@@ -1,45 +1,30 @@
-{% extends 'base.html' %}
+{% extends 'base_todolist.html' %}
 
 {% block meta %}
 <title>Login</title>
 {% endblock meta %}
 
 {% block content %}
-
-<div class = "login">
+<div class="login container-fluid text-center mt-5">
 
     <h1>Login</h1>
-
-    <form method="POST" action="">
+    <form method="POST" action="" class="form-signin">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+        <input type="text" name="username" placeholder="Username" class="form-control">
+        <input type="password" name="password" placeholder="Password" class="form-control">
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
+        <input class="btn btn-primary mt-3" type="submit" value="Login">
     </form>
 
     {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
 
 </div>
-
 {% endblock content %}

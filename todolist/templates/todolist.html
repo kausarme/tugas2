@@ -1,22 +1,18 @@
-{% extends 'base.html' %}
-
+{% extends 'base_todolist.html' %}
 
 {% block meta %}
 <!--bikin judul-->
 <title>{{ user.username }}! | Todolist</title>
 {% endblock meta %}
 
-
 {% block content %}
 <h1>Tugas 4: To Do List</h1>
 
-<!--  banti dengan logout dengan bootstrap -->
 <div class="nav-right">
     <strong>Halo, {{ user.username }}!</strong>
     <a class="btn" href="{% url 'todolist:logout' %}">Logout</a>
 </div>
 
-<!--Tabel-->
 <table>
     <tr>
         <td class="table-header">User</td>
