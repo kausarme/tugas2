@@ -1,6 +1,6 @@
 File Ini terdiri dari:
-- [Tugas 5](#Tugas 5)
-- [Tugas 4](#Tugas 4)
+- Tugas 5
+- Tugas 4
 
 # Tugas 4
 
@@ -533,10 +533,14 @@ body {
 
 ### 6. Buat card Bisa hover
 
+### 7. Added README.MD
+
 Tambahkan css card:hover
 
 ```css 
-
+.card:hover{  
+ 
+}
 ```
 
 ## Referensi Tugas 5:
