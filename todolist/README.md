@@ -361,33 +361,54 @@ deploy_ serta jawaban dari beberapa pertanyaan berikut:
 
 _Checklist_ untuk tugas ini adalah sebagai berikut:
 
-- [ ] Kustomisasi templat HTML yang telah dibuat pada dengan menggunakan CSS atau CSS _framework_ (seperti Bootstrap,
+- [x] Kustomisasi templat HTML yang telah dibuat pada dengan menggunakan CSS atau CSS _framework_ (seperti Bootstrap,
   Tailwind, Bulma) dengan ketentuan sebagai berikut:
-    - [ ] Kustomisasi templat untuk halaman _login_, _register_, dan _create-task_ semenarik mungkin.
-    - [ ] Kustomisasi halaman utama _todo list_ menggunakan _cards_. (Satu _card_ mengandung satu _task_).
-- [ ] Membuat keempat halaman yang dikustomisasi menjadi _responsive_.
+    - [x] Kustomisasi templat untuk halaman _login_, _register_, dan _create-task_ semenarik mungkin.
+    - [x] Kustomisasi halaman utama _todo list_ menggunakan _cards_. (Satu _card_ mengandung satu _task_).
+- [x] Membuat keempat halaman yang dikustomisasi menjadi _responsive_.
 
   > Dokumentasi CSS menganai `Media Query` dapat diakses melalui tautan
   > [ini](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
 
-- [ ] Menjawab beberapa pertanyaan berikut pada `README.md` pada folder `todolist`.
-    - [ ] Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing _
+- [x] Menjawab beberapa pertanyaan berikut pada `README.md` pada folder `todolist`.
+    - [] Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing _
       style_?
     - [ ] Jelaskan tag HTML5 yang kamu ketahui.
     - [ ] Jelaskan tipe-tipe CSS selector yang kamu ketahui.
-    - [ ] Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas.
-- [ ] Menambahkan efek ketika melakukan _hover_ pada _cards_ di halaman utama _todolist_. (BONUS)
+    - [x] Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas.
+- [x] Menambahkan efek ketika melakukan _hover_ pada _cards_ di halaman utama _todolist_. (BONUS)
+
+
 ## Implementasi
 
 ### 1. Tambahkan Bootstrap pada head.html
 ### 2. Ubah halaman Login dengan bootstrap
-Background: https://cssgradient.io/
+- Juga buat mengubah warna background bikin css dan link ke situ dari html 
+
+Link Warna gradient Background: https://cssgradient.io/
 ```css
 body{
   background: rgb(137,81,170);
   background: linear-gradient(90deg, rgba(137,81,170,1) 0%, rgba(61,61,215,1) 42%, rgba(0,212,255,1) 100%);
 }
 ```
+
+
+### 3.  Ubah Halaman Register dengan bootstrap
+
+### 4. Ubah Halaman TODOLIST dengan Bootstrap dan buat menjadi card
+
+### 5. Ubah Halaman create_task dengan bootstrap
+
+### 6. Buat card Bisa hover 
+Tambahkan css card:hover
+```css 
+
+```
+
+## Referensi Tugas 5:
+Inline CSS:
+https://www.w3schools.com/html/html_css.asp - Inline CSS
 
 Text Colors:
 https://getbootstrap.com/docs/4.0/utilities/colors/
@@ -397,15 +418,15 @@ https://mdbootstrap.com/docs/standard/extended/login/
 
 typography:
 https://getbootstrap.com/docs/4.0/content/typography/
-### 3.  Ubah Halaman Register dengan bootstrap
 
-### 4. Ubah Halaman TODOLIST dengan Bootstrap dan buat menjadi card
 Tombol:
 https://getbootstrap.com/docs/4.0/components/buttons/
-```html
-<a class="btn btn-success" href="{% url 'todolist:create_task' %}">Create a new task</a>
-```
 
-## Referensi Tugas 5:
-Inline CSS:
-https://www.w3schools.com/html/html_css.asp - Inline CSS
+Cards:
+https://getbootstrap.com/docs/4.0/components/card/
+
+Card Hovering:
+https://ordinarycoders.com/blog/article/codepen-bootstrap-card-hovers
+
+Snippets:
+https://bootsnipp.com/snippets/j6r4X

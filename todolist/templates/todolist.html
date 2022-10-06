@@ -6,17 +6,17 @@
 {% endblock meta %}
 
 {% block navbar %}
-<ul class="navbar-nav ml-auto">
-    <li class="navbar-text p-2 m-2 fw-bold"> Halo,{{user.username}}</li>
-    <li><a class="btn btn-danger m-2" href="{% url 'todolist:logout' %}" role="button">Logout</a></li>
-    <li><a class="btn btn-success m-2" href="{% url 'todolist:create_task' %}">Tambah Task</a></li>
-</ul>
+
+<a class="btn btn-danger m-2" href="{% url 'todolist:logout' %}" role="button">Logout</a>
+
 {% endblock navbar %}
 
 {% block content %}
-
+<h1 class="h1 p-2 m-2 fw-bold">Halo, {{user.username}}</h1>
+<a class="btn btn-success m-2" href="{% url 'todolist:create_task' %}">Tambah Task</a>
 <table>
     {% for task in tasks %}
+
     <div class="card p-1 m-4 shadow-lg">
         <div class="card-body">
             <div class="title-status">
@@ -36,9 +36,6 @@
         </div>
     </div>
     {% endfor %}
-
-    <a class="btn btn-success" href="{% url 'todolist:create_task' %}">Tambah Task</a>
-
 </table>
 
 
