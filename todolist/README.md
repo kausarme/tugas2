@@ -381,5 +381,31 @@ _Checklist_ untuk tugas ini adalah sebagai berikut:
 
 ### 1. Tambahkan Bootstrap pada head.html
 ### 2. Ubah halaman Login dengan bootstrap
-### 3. 
+Background: https://cssgradient.io/
+```css
+body{
+  background: rgb(137,81,170);
+  background: linear-gradient(90deg, rgba(137,81,170,1) 0%, rgba(61,61,215,1) 42%, rgba(0,212,255,1) 100%);
+}
+```
 
+Text Colors:
+https://getbootstrap.com/docs/4.0/utilities/colors/
+
+Contoh Login page Bootstrap:
+https://mdbootstrap.com/docs/standard/extended/login/
+
+typography:
+https://getbootstrap.com/docs/4.0/content/typography/
+### 3.  Ubah Halaman Register dengan bootstrap
+
+### 4. Ubah Halaman TODOLIST dengan Bootstrap dan buat menjadi card
+Tombol:
+https://getbootstrap.com/docs/4.0/components/buttons/
+```html
+<a class="btn btn-success" href="{% url 'todolist:create_task' %}">Create a new task</a>
+```
+
+## Referensi Tugas 5:
+Inline CSS:
+https://www.w3schools.com/html/html_css.asp - Inline CSS

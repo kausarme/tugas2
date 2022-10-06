@@ -5,66 +5,40 @@
 <title>{{ user.username }}! | Todolist</title>
 {% endblock meta %}
 
-{% block content %}
-<h1>Tugas 4: To Do List</h1>
+{% block navbar %}
+<ul class="navbar-nav ml-auto">
+    <li class="navbar-text p-2 m-2 fw-bold"> Halo,{{user.username}}</li>
+    <li><a class="btn btn-danger m-2" href="{% url 'todolist:logout' %}" role="button">Logout</a></li>
+    <li><a class="btn btn-success m-2" href="{% url 'todolist:create_task' %}">Tambah Task</a></li>
+</ul>
+{% endblock navbar %}
 
-<div class="nav-right">
-    <strong>Halo, {{ user.username }}!</strong>
-    <a class="btn" href="{% url 'todolist:logout' %}">Logout</a>
-</div>
+{% block content %}
 
 <table>
-    <tr>
-        <td class="table-header">User</td>
-        <td class="table-header">Title</td>
-        <td class="table-header">Description</td>
-        <td class="table-header">Date</td>
-        <td class="table-header">Status</td>
-        <td class="table-header">Ubah Status</td>
-        <td class="table-header">Hapus</td>
-    </tr>
-
     {% for task in tasks %}
-    <tr>
-        <td>{{ task.user.username }}</td>
-        <td>{{ task.title }}</td>
-        <td class="description-col">{{ task.description }}</td>
-        <td>
-            {{task.date|date:"N j, Y, H:i" }}
-        </td>
-
-        <td>
-            {% if task.is_finished %}
-            <p class="tag completed">
-                Selesai
-            </p>
-            {% else %}
-            <p class="tag not-completed">
-                Belum Selesai
-            </p>
-            {% endif %}
-
-        </td>
-        <td>
-            <a class="btn toggle-btn" href="{% url 'todolist:toggle_task' task.id %}">
-                Ubah
-            </a>
-        </td>
-        <td>
-            <a class="btn delete-btn" href="{% url 'todolist:delete_task' task.id %}">
-                Hapus Task
-            </a>
-        </td>
-    </tr>
-
+    <div class="card p-1 m-4 shadow-lg">
+        <div class="card-body">
+            <div class="title-status">
+                <p class="card-title">{{task.title}}</p>
+                    {% if task.is_finished %}
+                    <span class="badge rounded-pill bg-success align-top">Finished</span>
+                    {% else %}
+                    <span class="badge rounded-pill bg-danger align-top">Not Finished</span>
+                    {% endif %}
+            </div>
+            <p class="card-text">{{task.description}}</p>
+            <p class="card-text"><small class="text-muted">Created on {{task.date}}</small></p>
+        </div>
+        <div class="row m-2">
+            <a class="col btn btn-info m-2" href="{% url 'todolist:toggle_task' task.id %}" role="button">Change Status</a>
+            <a class="col btn btn-danger m-2" href="{% url 'todolist:delete_task' task.id %}" role="button">Delete Task</a>
+        </div>
+    </div>
     {% endfor %}
-    <tr>
-        <td class="add-row" colspan="7">
-            <a class="btn add-btn" href="{% url 'todolist:create_task' %}">
-                Tambah Task
-            </a>
-        </td>
-    </tr>
+
+    <a class="btn btn-success" href="{% url 'todolist:create_task' %}">Tambah Task</a>
+
 </table>
 
 
