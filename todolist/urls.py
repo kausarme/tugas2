@@ -1,5 +1,6 @@
 from django.urls import path
 from todolist.views import show_todolist, register, login_user, logout_user, toggle_task, create_task, delete_task
+from todolist.views import show_todolist_json
 
 app_name = "todolist"
 
@@ -11,4 +12,5 @@ urlpatterns = [
     path("create-task/", create_task, name="create_task"),
     path("toggle-task/<int:id>", toggle_task, name="toggle_task"),
     path("delete-task/<int:id>", delete_task, name="delete_task"),
+    path('json/', show_todolist_json, name='show_todolist_json'),
 ]

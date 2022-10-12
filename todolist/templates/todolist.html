@@ -24,22 +24,22 @@
                 }
                 div1.appendChild(card_header);
 
-                var card_body = document.createElement("div");
+                let card_body = document.createElement("div");
                 card_body.classList.add("card-body");
-                var card_title = document.createElement("h5");
+                let card_title = document.createElement("h5");
                 card_title.classList.add("card-title");
                 card_title.innerHTML = fields.title
                 card_body.appendChild(card_title);
 
-                var card_description = document.createElement("p");
+                let card_description = document.createElement("p");
                 card_description.classList.add("card-text");
                 card_description.innerHTML = fields.description;
                 card_body.appendChild(card_description)
 
-                var button_group = document.createElement("div");
+                let button_group = document.createElement("div");
                 button_group.classList.add("btn-group");
                 button_group.classList.add("float-end");
-                var buttons_code_block = '<form method="post" action="todolist/toggle-task/"' + fields.pk +
+                let buttons_code_block = '<form method="post" action="todolist/toggle-task/"' + fields.pk +
                     '<button class="btn btn-secondary btn-sm me-3" type="submit" name="toggle_done" id="toggle_button" >'
                 // ' {% if task.is_finished %} Mark Not Done {% else %} Mark Done {% endif %}' +
                 if (fields.is_finished) {
@@ -59,14 +59,14 @@
                 card_body.appendChild(button_group)
                 div1.append(card_body);
 
-                var toggle_button = button_group.firstChild.firstChild;
+                let toggle_button = button_group.firstChild.firstChild;
                 if (fields.is_finished) {
                     toggle_button.innerHTML = "Mark Not Done";
                 } else {
                     toggle_button.innerHTML = "Mark Done";
                 }
 
-                var card_footer = document.createElement("div");
+                let card_footer = document.createElement("div");
                 card_footer.classList.add("card-footer");
                 card_footer.classList.add("text-muted");
                 card_footer.innerHTML = fields.date;

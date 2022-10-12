@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.core import serializers
 
+
 # Create your views here.
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
@@ -19,6 +20,7 @@ def show_todolist(request):
         "user": request.user,
     }
     return render(request, "todolist.html", context)
+
 
 @login_required(login_url='/todolist/login/')
 def show_todolist_json(request):
@@ -97,4 +99,3 @@ def toggle_task(request, id):
         return redirect("/todolist")
     messages.error(request, "An error occurred while editing the task.")
     return redirect("/todolist")
-
