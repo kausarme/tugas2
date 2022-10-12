@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render
-
 from todolist.forms import TaskForm
 from todolist.models import Task
 from django.shortcuts import redirect
@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-
+from django.core import serializers
 
 # Create your views here.
 @login_required(login_url='/todolist/login/')
@@ -19,6 +19,11 @@ def show_todolist(request):
         "user": request.user,
     }
     return render(request, "todolist.html", context)
+
+@login_required(login_url='/todolist/login/')
+def show_todolist_json(request):
+    data_task = Task.objects.filter(user=request.user).order_by('id')
+    return HttpResponse(serializers.serialize("json", data_task), content_type="application/json")
 
 
 def register(request):
@@ -92,3 +97,4 @@ def toggle_task(request, id):
         return redirect("/todolist")
     messages.error(request, "An error occurred while editing the task.")
     return redirect("/todolist")
+
