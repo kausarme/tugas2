@@ -12,70 +12,59 @@
             $.each(json, function (index, val) {
                 let fields = val.fields;
                 let div1 = document.createElement("div");
-                div1.classList.add("card");
-                div1.classList.add("mb-5");
-                div1.classList.add("col-lg-5");
-                let card_header = document.createElement("div");
-                card_header.classList.add("card-header")
-                if (fields.is_finished) {
-                    card_header.innerHTML = "Done";
-                } else {
-                    card_header.innerHTML = "In Progress";
-                }
-                div1.appendChild(card_header);
+                div1.classList.add("card p-1 m-4 shadow-lg");
 
                 let card_body = document.createElement("div");
                 card_body.classList.add("card-body");
+
                 let card_title = document.createElement("h5");
                 card_title.classList.add("card-title");
                 card_title.innerHTML = fields.title
+
+                let card_progress = document.createElement("span");
+                card_progress.classList.add("badge rounded-pill bg-success align-top")
+                if (fields.is_finished) {
+                    card_progress.innerHTML = "Finished";
+                } else {
+                    card_progress.innerHTML = "Not Finished";
+                }
+
                 card_body.appendChild(card_title);
+                card_body.appendChild(card_progress);
+
 
                 let card_description = document.createElement("p");
                 card_description.classList.add("card-text");
                 card_description.innerHTML = fields.description;
                 card_body.appendChild(card_description)
 
-                let button_group = document.createElement("div");
-                button_group.classList.add("btn-group");
-                button_group.classList.add("float-end");
-                let buttons_code_block = '<form method="post" action="todolist/toggle-task/"' + fields.pk +
-                    '<button class="btn btn-secondary btn-sm me-3" type="submit" name="toggle_done" id="toggle_button" >'
-                // ' {% if task.is_finished %} Mark Not Done {% else %} Mark Done {% endif %}' +
-                if (fields.is_finished) {
-                    buttons_code_block += "Mark Not Done";
-                } else {
-                    buttons_code_block += "Mark Done";
-                }
-                buttons_code_block += '</button>' +
-                    '</form>' +
-                    '<form method="post" action="todolist/toggle-task/"' + fields.pk +
-                    '<button class="btn btn-danger btn-sm" type="submit" name="delete">' +
-                    'Delete' +
-                    '</button>' +
-                    '</form>'
+                let card_date = document.createElement("p");
+                card_date.classList.add("card-text");
+                let card_date_small = document.createElement("small")
+                card_date_small.classList.add("text-muted");
+                card_date_small.innerHTML = "Created on " + fields.description;
+                card_date.appendChild(card_date_small)
+                card_body.appendChild(card_date)
 
-                button_group.innerHTML = buttons_code_block;
+
+
+                let button_group = document.createElement("div");
+                button_group.classList.add("row m-2");
+                let button_group_code = '<form method="post" action="todolist/toggle-task/' + fields.pk +
+                    '" <button class="col btn btn-info m-2" type="submit" name="toggle_button" id="toggle_button" ></button></form>'
+
+                button_group_code += '<form method="post" action="todolist/delete-task/' + fields.pk +
+                    '" <button class="btn btn-danger btn-sm" type="submit" name="delete" id="delete_button">' +
+                    'Delete</button></form>'
+
+                button_group.innerHTML = button_group_code;
                 card_body.appendChild(button_group)
                 div1.append(card_body);
-
-                let toggle_button = button_group.firstChild.firstChild;
-                if (fields.is_finished) {
-                    toggle_button.innerHTML = "Mark Not Done";
-                } else {
-                    toggle_button.innerHTML = "Mark Done";
-                }
-
-                let card_footer = document.createElement("div");
-                card_footer.classList.add("card-footer");
-                card_footer.classList.add("text-muted");
-                card_footer.innerHTML = fields.date;
-                div1.append(card_footer);
 
                 cards.push(div1.outerHTML);
             });
 
-            var card_container = document.getElementById("card-container");
+            let card_container = document.getElementById("card-container");
             card_container.innerHTML = cards.join("");
         });
     });
@@ -91,29 +80,30 @@
 {% block content %}
 <h1 class="h1 p-2 m-2 fw-bold">Halo, {{user.username}}</h1>
 <a class="btn btn-success m-2" href="{% url 'todolist:create_task' %}">Tambah Task</a>
-<table>
+<table id="card-container">
     {% for task in tasks %}
-
-    <div class="card p-1 m-4 shadow-lg">
-        <div class="card-body">
-            <div class="title-status">
-                <p class="card-title">{{task.title}}</p>
-                {% if task.is_finished %}
-                <span class="badge rounded-pill bg-success align-top">Finished</span>
-                {% else %}
-                <span class="badge rounded-pill bg-danger align-top">Not Finished</span>
-                {% endif %}
-            </div>
-            <p class="card-text">{{task.description}}</p>
-            <p class="card-text"><small class="text-muted">Created on {{task.date}}</small></p>
-        </div>
-        <div class="row m-2">
-            <a class="col btn btn-info m-2" href="{% url 'todolist:toggle_task' task.id %}" role="button">Change
-                Status</a>
-            <a class="col btn btn-danger m-2" href="{% url 'todolist:delete_task' task.id %}" role="button">Delete
-                Task</a>
-        </div>
-    </div>
+    {% comment %}
+<!--    <div class="card p-1 m-4 shadow-lg">-->
+<!--        <div class="card-body">-->
+<!--            <div class="title-status">-->
+<!--                <p class="card-title">{{task.title}}</p>-->
+<!--                {% if task.is_finished %}-->
+<!--                <span class="badge rounded-pill bg-success align-top">Finished</span>-->
+<!--                {% else %}-->
+<!--                <span class="badge rounded-pill bg-danger align-top">Not Finished</span>-->
+<!--                {% endif %}-->
+<!--            </div>-->
+<!--            <p class="card-text">{{task.description}}</p>-->
+<!--            <p class="card-text"><small class="text-muted">Created on {{task.date}}</small></p>-->
+<!--        </div>-->
+<!--        <div class="row m-2">-->
+<!--            <a class="col btn btn-info m-2" href="{% url 'todolist:toggle_task' task.id %}" role="button">Change-->
+<!--                Status</a>-->
+<!--            <a class="col btn btn-danger m-2" href="{% url 'todolist:delete_task' task.id %}" role="button">Delete-->
+<!--                Task</a>-->
+<!--        </div>-->
+<!--    </div>-->
+    {% endcomment %}
     {% endfor %}
 </table>
 
