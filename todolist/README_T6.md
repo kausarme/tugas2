@@ -34,9 +34,11 @@ Setelah itu Ajax akan memperoleh data baru.
 
 ## Penerapan asynchronous programming pada AJAX.
 
-AJAX (Asynchronous JavaScript And XML) memiliki kemampuan untuk mengubah isi html / tampilan page tanpa harus mengubah
-file/data yang tentunya membutuhkan refresh. AJAX juga mampu membuat HTTP POST dan GET request sendirinya. Maka dari
-itu, dengan ajax kita bisa mensubmit atau mengambil data dan langsung menampilkannya di web.
+AJAX atau *"Asynchronous JavaScript And XML"* adalah contoh dari  asynchronous programming.
+AJAX dapat mengambil data JSON dari server tanpa perlu memuat ulang keselurahan halaman.
+AJAX juga dapat mensubmit form menggunakan HTTP POST.
+
+Kemampuan AJAX untuk melakukan semua hal ini tanpa memuat ulang keseluruhan halaman adalah alasan mengapa AJAX termasuk asynchronous programming.
 
 ## Implementasi
 
