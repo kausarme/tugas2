@@ -21,6 +21,14 @@ def show_todolist(request):
     }
     return render(request, "todolist.html", context)
 
+@login_required(login_url='/todolist/login/')
+def show_todolist_lama(request):
+    tasks = Task.objects.filter(user=request.user)
+    context = {
+        'tasks': tasks,
+        "user": request.user,
+    }
+    return render(request, "todolist_backup.html", context)
 
 @login_required(login_url='/todolist/login/')
 def show_todolist_json(request):
