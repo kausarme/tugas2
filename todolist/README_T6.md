@@ -51,14 +51,12 @@ itu, dengan ajax kita bisa mensubmit atau mengambil data dan langsung menampilka
 ### Implementasi AJAX POST
 
 1. Pertama tama saya membuat sebuah Modal
-2. Selanjutnya saya mengubah HTML
+2. Selanjutnya saya membuat tombol untuk menampilkan modal tersebut
+3. Saya tambahkan form pada modal tersebut
+4. Selanjutnya saya buat script yang akan menangkap data dari modal dan menangani pengiriman datanya
+5. Setelah form disubmi modal akan di-_hidden_ lagi dan todolist akan dimuat ulang secara asinkronus
 
-Saya membuat view baru untuk menyimpan data dalam JSON yang dikirim form sebagai objek baru di database. Saya
-menambahkan route baru yaitu path /todolist/add yang mengarah ke view itu.
 
-Lalu saya menggunakan AJAX untuk override function sumbit pada html. AJAX akan mengumpulkan data-data yang ada pada form
-dan mengemasnya dalam sebuah JSON untuk dikirim melalui POST request ke url todolist/add. Setelah form di submit, modal
-ditutup dan data Todolist dimuat kembali dari server (refresh asinkronus).
 
 
 
